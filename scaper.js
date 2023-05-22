@@ -1,10 +1,10 @@
 const puppeteer = require('puppeteer');
 
 
-const scraper = async () => {
+const scraper = async (showName) => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await page.goto(`https://www.hbo.com/the-last-of-us`);
+    await page.goto(`https://www.hbo.com/${showName}`);
 
     const seriesName = await page.evaluate(() => {
         const nameTags = document.querySelector(".sc-g8nqnn-0.dXApWk h1");

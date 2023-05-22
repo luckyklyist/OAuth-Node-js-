@@ -1,22 +1,39 @@
-const router=require('express').Router();
-const scaper_data=require('../scaper');
+const router = require('express').Router();
+const scaper_data = require('../scaper');
 
 router.get('/', async (req, res) => {
-    try{
+    try {
+        res.render('index',{scraped:false})
+    }
+    catch (err) {
+        console.log(err)
+        res.send("Erro loading sites")
+    }
+})
+
+router.post('/',async(req,res)=>{
+    const showName=req.body.showName;
+    console.log(showName,"heyyyyyyyyyyyyy")
+    try {
         const { seriesName,
             charName,
             castName,
-            scrapeImg } = await scaper_data();
-        
-            console.log(seriesName);
-    
-        res.render("index",{seriesName,charName,castName,scrapeImg});
+            scrapeImg } = await scaper_data(showName);
+
+        console.log(seriesName);
+
+        res.render("index", { scraped:true,seriesName, charName, castName, scrapeImg });
     }
-    catch(err){
+    catch (err) {
         console.log(err),
-        res.send("An error occured during scraping");
+            res.send("An error occured during scraping");
     }
-    
+
 })
 
-module.exports=router;
+router.get('/shows', async (req, res) => {
+    
+
+})
+
+module.exports = router;

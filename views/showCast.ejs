@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/tailwind.css">
+  <!-- <link rel="stylesheet" href="/css/style.css"> -->
+  <title>Home</title>
+</head>
+
+<body>
+
+  <div class="text-center mt-5 text-gray-700 text-xl">
+    <%= seriesName %>
+  </div>
+  <div>
+    <div class="grid grid-cols-1 gap-4 gap-y-6 border-b border-gray-300 py-12 pb-20 md:grid-cols-2 lg:grid-cols-4">
+
+      <% for(let i=0; i < charName.length; i++) { %>
+        <div class="rounded-md border">
+          <img
+            src="<%=scrapeImg[i]%>"
+            alt="Gabrielle Fernandez" class="rounded-lg object-cover " />
+          <p class="mt-6 w-full px-2 text-xl font-semibold text-gray-900">
+            <%= charName[i] %>
+          </p>
+          <p class="w-full px-2 pb-6 text-sm font-semibold text-gray-500">
+            <%=castName[i]%>
+          </p>
+        </div>
+        <% } %>
+    </div>
+  </div>
+
+</body>
+
+</html>

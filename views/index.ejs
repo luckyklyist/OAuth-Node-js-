@@ -10,29 +10,45 @@
   <title>Home</title>
 </head>
 
-<body>
-
-  <div class="text-center mt-5 text-gray-700 text-xl">
-    <%= seriesName %>
-  </div>
-  <div>
-    <div class="grid grid-cols-1 gap-4 gap-y-6 border-b border-gray-300 py-12 pb-20 md:grid-cols-2 lg:grid-cols-4">
-
-      <% for(let i=0; i < charName.length; i++) { %>
-        <div class="rounded-md border">
-          <img
-            src="<%=scrapeImg[i]%>"
-            alt="Gabrielle Fernandez" class="rounded-lg object-cover " />
-          <p class="mt-6 w-full px-2 text-xl font-semibold text-gray-900">
-            <%= charName[i] %>
-          </p>
-          <p class="w-full px-2 pb-6 text-sm font-semibold text-gray-500">
-            <%=castName[i]%>
-          </p>
+<body class="">
+  <%- include('nav')%>
+    <form action="" method="post">
+      <div class="relative flex-grow w-full container px-5 py-24 mx-auto">
+        <label for="showName" class="leading-7 text-sm text-gray-600">Name of the shows</label>
+        <div class="flex">
+          <input type="text" id="showName" name="showName"
+            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+          <button class="bg-black p-2 rounded-sm text-white hover:scale-110 hover:ease-linear ml-3">Search</button>
         </div>
-        <% } %>
-    </div>
-  </div>
+      </div>
+
+    </form>
+    <%if (scraped) {%>
+      <div class="m-10 p-4">
+        <div class="text-center mt-5 text-gray-700 text-xl">
+          <%= seriesName %>
+        </div>
+        <div>
+          <div
+            class="grid grid-cols-1 gap-4 gap-y-6 border-b border-gray-300 py-12 pb-20 md:grid-cols-2 lg:grid-cols-4">
+  
+            <% for(let i=0; i < charName.length; i++) { %>
+              <div class="rounded-md border">
+                <img src="<%=scrapeImg[i]%>" alt="Gabrielle Fernandez" class="rounded-lg object-cover " />
+                <p class="mt-6 w-full px-2 text-xl font-semibold text-gray-900">
+                  <%= charName[i] %>
+                </p>
+                <p class="w-full px-2 pb-6 text-sm font-semibold text-gray-500">
+                  <%=castName[i]%>
+                </p>
+              </div>
+              <% } %>
+          </div>
+        </div>
+        <%}%>
+      </div>
+        
+
 
 </body>
 
