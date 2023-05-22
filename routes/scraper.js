@@ -1,10 +1,11 @@
 const router = require('express').Router();
 const scaper_data = require('../scaper');
-
+const checkAuth=require('../middleware/checkAuthentication');
 router.get('/', async (req, res) => {
     try {
-        console.log(req.headers.authorization)
-        res.render('index', { scraped: false, error: false, showName: '' })
+        const authenticated=req.cookies.access_token ? true : false;
+        console.log(req.user)
+        res.render('index', { scraped: false, error: false, showName: '' ,authenticated})
     }
     catch (err) {
         console.log(err)
@@ -12,7 +13,8 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.post('/', async (req, res) => {
+router.post('/', checkAuth,async (req, res) => {
+    const authenticated=req.cookies.access_token ? true : false;
     const showN = req.body.showName;
     const showName = showN.replace(/\s+$/g, '').toLowerCase().replace(/\s/g, '-');
     console.log(showName)
@@ -24,11 +26,11 @@ router.post('/', async (req, res) => {
 
         console.log(seriesName);
 
-        res.render("index", { scraped: true, seriesName, charName, castName, scrapeImg, error: false, showName: showN });
+        res.render("index", { scraped: true, seriesName, charName, castName, scrapeImg, error: false, showName: showN,authenticated });
     }
     catch (err) {
         console.log(err),
-            res.render('index', { error: true, scraped: false, showName: showN });
+            res.render('index', { error: true, scraped: false, showName: showN ,authenticated});
     }
 
 })

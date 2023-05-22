@@ -21,7 +21,18 @@ router.get('/callback', (req, res) => {
         .then(resp => {
             console.log(resp.data.access_token,
                 token = resp.data.access_token,
-                axios.get(`${USER_URL}`, {
+                res.cookie('access_token',token,{httpOnly:true}),
+                res.redirect('/profile')
+            )
+        })
+        .catch(err => console.log("err"))
+})
+
+
+
+/*
+
+axios.get(`${USER_URL}`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'User-Agen': 'Last of Us'
@@ -29,21 +40,10 @@ router.get('/callback', (req, res) => {
                 })
                     .then((resp) => {
                         const userData = resp.data;
-                        console.log(userData);
+                        
+                        res.render('profile',{userData})
                     })
                     .catch(err => console.log("Error reterving user Infromation"))
-            )
-
-        })
-        .catch(err => console.log("err"))
-    console.log(token)
-
-
-
-    res.send(code)
-   
-})
-
-
+*/
 
 module.exports = router;
