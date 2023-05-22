@@ -1,15 +1,6 @@
 const axios = require('axios');
 const router = require('express').Router();
 
-/*
-
-    redirect_url:"http://127.0.0.1:3000/github/callback",
-    authorize_url:"https://github.com/login/oauth/authorize",
-    token_url:"https://github.com/login/oauth/access_token",
-    user_url:"https://api.github.com/user",
-    scope:"user"
-*/
-
 const CLIENT_ID = process.env.CLIENT_ID
 const CLIENT_SECRET = process.env.CLIENT_SECRET_KEY
 const GITHUB_AUTH_LINK = "https://github.com/login/oauth/access_token"
@@ -47,14 +38,12 @@ router.get('/callback', (req, res) => {
         .catch(err => console.log("err"))
     console.log(token)
 
-    
+
 
     res.send(code)
    
 })
 
 
-
-// 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
 
 module.exports = router;

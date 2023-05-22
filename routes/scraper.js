@@ -3,6 +3,7 @@ const scaper_data = require('../scaper');
 
 router.get('/', async (req, res) => {
     try {
+        console.log(req.headers.authorization)
         res.render('index', { scraped: false, error: false, showName: '' })
     }
     catch (err) {
@@ -14,6 +15,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     const showN = req.body.showName;
     const showName = showN.replace(/\s+$/g, '').toLowerCase().replace(/\s/g, '-');
+    console.log(showName)
     try {
         const { seriesName,
             charName,
