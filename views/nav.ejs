@@ -1,39 +1,50 @@
 <header class="bg-gradient-to-b from-gray-900 to-black bg-opacity-70 backdrop-filter backdrop-blur-lg text-white">
-  <div class="container mx-auto px-4 py-6 md:flex md:items-center">
-      <a href="/" class="flex items-center  mb-4 md:mb-0">
-          <img class="h-8 w-auto mr-2" src="https://seeklogo.com/images/H/house-stark-logo-FA9C35FCD2-seeklogo.com.png" alt="HBO logo">
-          <span class="text-xl font-bold">Cast Scraper</span>
-      </a>
-      <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-          <a href="#" class="mr-5 hover:underline" onclick="submitForm('Game of Thrones')">Game of Thrones</a>
-          <a href="#" class="mr-5 hover:underline" onclick="submitForm('Euphoria')">Euphoria</a>
-          <a href="#" class="mr-5 hover:underline" onclick="submitForm('The Last of Us')">The Last of Us</a>
-          <a href="#" class="mr-5 hover:underline" onclick="submitForm('House of the Dragon')">House of the Dragon</a>
-      </nav>
-      <% if (authenticated) { %>
-          <a href="/profile" class="inline-flex items-center bg-white border-0 py-1 px-3 focus:outline-none hover:bg-gray-100 rounded text-black mt-4 md:mt-0">
-              Profile
-              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 12h14M12 5l7 7-7 7"></path>
-              </svg>
-          </a>
-      <% } else { %>
-          <a href="/github/auth" class="inline-flex items-center bg-white border-0 py-1 px-3 focus:outline-none hover:bg-gray-100 rounded  mt-4 md:mt-0 text-black">
-              Login with GitHub
-              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 12h14M12 5l7 7-7 7"></path>
-              </svg>
-          </a>
-      <% } %>
-  </div>
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <a href="/" class="flex title-font font-medium items-center  mb-4 md:mb-0">
+            <img class="h-[5vh]" src="https://seeklogo.com/images/H/house-stark-logo-FA9C35FCD2-seeklogo.com.png" alt="hbo logo" />
+            <span class="ml-3 text-xl">Cast Scraper</span>
+        </a>
+        <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+            <a href="#" class="mr-5" onclick="submitForm('Game of Thrones')">Game of Thrones</a>
+            <a href="#" class="mr-5" onclick="submitForm('Euphoria')">Euphoria</a>
+            <a href="#" class="mr-5" onclick="submitForm('The Last of Us')">The Last of Us</a>
+            <a href="#" class="mr-5" onclick="submitForm('House of the Dragon')">House of the
+                Dragon</a>
+
+            <!-- Hidden form -->
+            <form id="postForm" method="POST" style="display: none;">
+                <input type="hidden" id="showNameInput" name="showName" value="">
+            </form>
+
+        </nav>
+        <% if (authenticated) { %>
+            <button
+                class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-black mt-4 md:mt-0">
+                <a href="/profile">Profile</a>
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+            </button>
+            <% } else { %>
+                <button
+                    class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-black mt-4 md:mt-0">
+                    <a href="/github/auth">Login with Github</a>
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+                <% } %>
+    </div>
 </header>
 
 <script>
-  function submitForm(showName) {
-      const form = document.getElementById('postForm');
-      const input = document.getElementById('showNameInput');
+    function submitForm(showName) {
+        const form = document.getElementById('postForm');
+        const input = document.getElementById('showNameInput');
 
-      input.value = showName;
-      form.submit();
-  }
+        input.value = showName;
+        form.submit();
+    }
 </script>

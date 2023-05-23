@@ -37,18 +37,28 @@ const scraper = async (showName) => {
         })
         return charImages;
     })
+
+    const charDetail=await page.evaluate(()=>{
+        const castDetailTags = document.querySelectorAll(".content-tray-item .sc-s7bz8o-0.kecPSH.card-container.h-100.link-card.card-container-default .card-button.usePointer");
+        const charDetail=[];
+        castDetailTags.forEach((char)=>{
+            charDetail.push(char.href);
+        })
+        return charDetail;
+    })
     await browser.close()
 
     return {
         seriesName,
         charName,
         castName,
-        scrapeImg
+        scrapeImg,
+        charDetail
     }
 }
 // (async () => {
 //     const data = await scraper();
-//     console.log(data.seriesName);
+//     console.log(data.charDetail);
 // })();
 
 
