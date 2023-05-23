@@ -22,6 +22,6 @@ const addFavCharacterRoute=require('./routes/addFavCharacter');
 app.use('/',scraperPageRoute);
 app.use('/github',authUserRoute);
 app.use('/profile',profileUserRoute);
-app.use('/add',addFavCharacterRoute);
+app.use('/characters',addFavCharacterRoute);
 
 app.listen(port, () => console.log(`App listening at the port ${port}`));

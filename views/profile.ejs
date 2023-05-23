@@ -48,7 +48,12 @@
                     <p class="w-full px-2  text-sm font-semibold text-gray-500">
                         <%= char.castName %>
                     </p>
-                    <button type="button" class="text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mx-2 my-4 hover:scale-110 hover:ease-in-out duration-500">Delete</button>
+                    <button type="button"
+                        class="text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mx-2 my-4 hover:scale-110 hover:ease-in-out duration-500">
+                        <a href="/characters/delete/<%=char._id%>">
+                            Delete
+                        </a>
+                    </button>
                 </div>
                 <%})%>
         </div>
