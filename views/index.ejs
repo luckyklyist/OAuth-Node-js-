@@ -30,56 +30,62 @@
         </div>
         <div>
           <div class="grid grid-cols-1 gap-4 gap-y-6 border-b border-gray-300 py-2 pb-20 md:grid-cols-2 lg:grid-cols-4">
-
             <% for(let i=0; i < charName.length; i++) { %>
-              <div class="rounded-md border">
-                <img src="<%=scrapeImg[i]%>" alt="Gabrielle Fernandez" class="rounded-lg object-cover " />
-                <p class="mt-6 w-full px-2 text-xl font-semibold text-gray-900">
-                  <%= charName[i] %>
-                </p>
-                <p class="w-full px-2 pb-6 text-sm font-semibold text-gray-500">
-                  <%=castName[i]%>
-                </p>
-                <button type="button"
-                  class="text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mx-2 my-4 hover:scale-110 hover:ease-in-out duration-500">
-                  <a
-                    href="/characters/add?characterName=<%= charName[i] %>&castName=<%=castName[i]%>&favCharUrl=<%=scrapeImg[i]%>&showName=<%=showName%>">
-                    Add
-                  </a>
-                </button>
+              <div class="rounded-md border overflow-hidden shadow-lg hover:shadow-xl">
+                <img src="<%=scrapeImg[i]%>" alt="Gabrielle Fernandez" class="object-contain h-40 w-full" />
+                <div class="p-4">
+                  <p class="text-xl font-semibold text-gray-900 mb-2">
+                    <%= charName[i] %>
+                  </p>
+                  <p class="text-sm font-semibold text-gray-500 mb-4">
+                    <%=castName[i]%>
+                  </p>
+                  <button type="button"
+                    class="text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mx-auto mb-4 hover:scale-105 transition duration-300">
+                    <a
+                      href="/characters/add?characterName=<%= charName[i] %>&castName=<%=castName[i]%>&favCharUrl=<%=scrapeImg[i]%>&showName=<%=showName%>">
+                      Add
+                    </a>
+                  </button>
+                </div>
               </div>
               <% } %>
           </div>
         </div>
-        <%}%>
       </div>
 
-      <% if (error) { %>
-        <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4 m-10" role="alert">
-          <p class="font-bold">Error fetching data</p>
-          <p>Please check the show name and try again.</p>
+
+      <%}%>
         </div>
-        <% } %>
 
-          <div class="mx-44 text-justify">
-            <div class="text-xl text-center my-5">
-              Welcome to the HBO Cast Scraper! 🎉
-            </div>
-            <p>
-              Write the names of your favorite TV shows and see the names of the cast members. Add them to your profile
-              as
-              your favorite cast with the characters they portray.
-
-              I've already added my list with Zendaya from Euphoria 🎭, Pedro Pascal from The Last of Us 🎮, and Maisie
-              Williams from Game of Thrones 🐉.
-
-              What did you add? Let's get started!
-              Login with GitHub to begin the exciting journey! 🔐</p>
+        <% if (error) { %>
+          <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4 m-10" role="alert">
+            <p class="font-bold">Error fetching data</p>
+            <p>Please check the show name and try again.</p>
           </div>
-
-
-
-
+          <% } %>
+            <% if (!authenticated) { %>
+              <div
+                class="mx-44 text-justify bg-gradient-to-b from-gray-900 to-black bg-opacity-70 backdrop-filter backdrop-blur-lg rounded-lg p-8 ">
+                <div class="text-4xl text-center font-bold text-white my-8">
+                  Welcome to the HBO Cast Scraper! 🎉
+                </div>
+                <p class="text-lg text-white">
+                  Write the names of your favorite TV shows and see the names of the cast members. Add them to your
+                  profile as your
+                  favorite cast with the characters they portray.
+                </p>
+                <p class="text-lg mt-6 text-white">
+                  I've already added my list with <span class="text-green-400">Zendaya</span> from Euphoria 🎭,
+                  <span class="text-green-400">Pedro Pascal</span> from The Last of Us 🎮, and
+                  <span class="text-green-400">Maisie Williams</span> from Game of Thrones 🐉.
+                </p>
+                <p class="text-lg mt-6 text-white">
+                  What did you add? Let's get started! Login with GitHub to begin the exciting journey! 🔐
+                </p>
+              </div>
+              <% } %>
+                <%- include('footer')%>
 </body>
 
 </html>
