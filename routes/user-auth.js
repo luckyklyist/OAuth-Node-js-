@@ -21,29 +21,16 @@ router.get('/callback', (req, res) => {
         .then(resp => {
             console.log(resp.data.access_token,
                 token = resp.data.access_token,
-                res.cookie('access_token',token,{httpOnly:true}),
+                res.cookie('access_token', token, { httpOnly: true }),
                 res.redirect('/profile')
             )
         })
         .catch(err => console.log("err"))
 })
 
-
-
-/*
-
-axios.get(`${USER_URL}`, {
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'User-Agen': 'Last of Us'
-                    }
-                })
-                    .then((resp) => {
-                        const userData = resp.data;
-                        
-                        res.render('profile',{userData})
-                    })
-                    .catch(err => console.log("Error reterving user Infromation"))
-*/
+router.get('/logout', (req, res) => {
+    res.cookie('access_token','', { expires: new Date(0), httpOnly: true });
+    res.redirect('/')
+})
 
 module.exports = router;

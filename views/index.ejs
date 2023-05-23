@@ -6,7 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/tailwind.css">
-  <!-- <link rel="stylesheet" href="/css/style.css"> -->
   <title>Home</title>
 </head>
 
@@ -30,8 +29,7 @@
           <%= seriesName %>
         </div>
         <div>
-          <div
-            class="grid grid-cols-1 gap-4 gap-y-6 border-b border-gray-300 py-2 pb-20 md:grid-cols-2 lg:grid-cols-4">
+          <div class="grid grid-cols-1 gap-4 gap-y-6 border-b border-gray-300 py-2 pb-20 md:grid-cols-2 lg:grid-cols-4">
 
             <% for(let i=0; i < charName.length; i++) { %>
               <div class="rounded-md border">
@@ -42,6 +40,13 @@
                 <p class="w-full px-2 pb-6 text-sm font-semibold text-gray-500">
                   <%=castName[i]%>
                 </p>
+                <button type="button"
+                  class="text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mx-2 my-4 hover:scale-110 hover:ease-in-out duration-500">
+                  <a
+                    href="/add?characterName=<%= charName[i] %>&castName=<%=castName[i]%>&favCharUrl=<%=scrapeImg[i]%>">
+                    Add
+                  </a>
+                </button>
               </div>
               <% } %>
           </div>
@@ -50,11 +55,28 @@
       </div>
 
       <% if (error) { %>
-      <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4 m-10" role="alert">
-        <p class="font-bold">Error fetching data</p>
+        <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4 m-10" role="alert">
+          <p class="font-bold">Error fetching data</p>
           <p>Please check the show name and try again.</p>
         </div>
         <% } %>
+
+          <div class="mx-44 text-justify">
+            <div class="text-xl text-center my-5">
+              Welcome to the HBO Cast Scraper! 🎉
+            </div>
+            <p>
+              Write the names of your favorite TV shows and see the names of the cast members. Add them to your profile
+              as
+              your favorite cast with the characters they portray.
+
+              I've already added my list with Zendaya from Euphoria 🎭, Pedro Pascal from The Last of Us 🎮, and Maisie
+              Williams from Game of Thrones 🐉.
+
+              What did you add? Let's get started!
+              Login with GitHub to begin the exciting journey! 🔐</p>
+          </div>
+
 
 
 
